@@ -1,7 +1,4 @@
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,6 +12,8 @@ public class Client extends Thread {
     private ArrayList<Card> deck;
     private Card card;
     private Game game;
+
+    private File file;
 
     //where game is happening
     public void run(){
@@ -144,4 +143,16 @@ public class Client extends Thread {
             card.setFields(null, 0);
         }
     }
+//
+//    private void savePlayer() {
+//        file = new File("scores.txt");
+//        try {
+//            file.createNewFile();
+//            PrintWriter printWriter = new PrintWriter(file);
+//            printWriter.append()
+//        } catch (IOException e) {
+//            System.err.println("fail");
+//        }
+//
+//    }
 }
