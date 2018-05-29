@@ -46,7 +46,6 @@ public class Client extends Thread {
                         getCard();
                         if (card.getValue() == 1 && card.getSuit().equals("Stand!")){
                             onStand();
-                            game.checkWinner();
                             break;
                         }
                     }
@@ -78,6 +77,8 @@ public class Client extends Thread {
         }
         System.out.println("Dealer playing with " + player.info() + " stands");
         card = new Card("dStand", 1);
+        game.checkWinner();
+        player.setNumberOfCredits(game.getPlayer().getNumberOfCredits());
         sendCard();
     }
 

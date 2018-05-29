@@ -21,6 +21,10 @@ public class Game {
         System.out.println(player.info() + " bet " + bet + " credits");
     }
 
+    public Player getPlayer(){
+        return player;
+    }
+
     public void addPlayersPoints(int value) { playersPoints += value; }
     public void addDealersPoints(int value) { dealersPoints += value; }
 
@@ -46,15 +50,21 @@ public class Game {
     public void checkWinner(){
         if (playersPoints > 21){
             bet *= -1;
+            System.out.println("Dealer("+player.info()+") wins");
         } else if (dealersPoints > 21){
             bet *= 2;
+            System.out.println("Player("+player.info()+") wins");
         }
-        if (playersPoints < 21 && dealersPoints < 21){
+        else{
             if (dealersPoints >= playersPoints){
                 bet *= -1;
+                System.out.println("Dealer("+player.info()+") wins");
             } else {
                 bet *= 2;
+                System.out.println("Player("+player.info()+") wins");
             }
         }
+        int tmp =  player.getNumberOfCredits() + bet;
+        player.setNumberOfCredits(tmp);
     }
 }
